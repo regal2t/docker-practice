@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  client:
+    container_name: mern-frontend
+    build: 
+      context: ./client   
+      dockerfile: Dockerfile
+    network_mode: host
+    restart: always
+
+  server:
+    container_name: mern-backend
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    network_mode: host
+    restart: always
+
+  mongodb:
+    image: mongo:5.0
+    container_name: mern-mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=regal2t
+      - MONGO_INITDB_ROOT_PASSWORD=regal2t
+    network_mode: host
