@@ -1,0 +1,14 @@
+# Use the official MySQL image from Docker Hub
+FROM mysql:5.7
+
+# Set environment variables
+ENV MYSQL_DATABASE=mydatabase \
+    MYSQL_USER=myuser \
+    MYSQL_PASSWORD=mypassword \
+    MYSQL_ROOT_PASSWORD=myrootpassword
+
+# Copy the SQL dump file into the container
+COPY leavedb.sql /docker-entrypoint-initdb.d/sbd.sql
+
+# Expose port 3306 to the outside world
+EXPOSE 3306
